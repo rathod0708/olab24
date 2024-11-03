@@ -1,50 +1,39 @@
-
 package newshelf;
 
+import oldshelf.Comic;
+import oldshelf.Fiction;
+import oldshelf.FictionType;
+import oldshelf.TextBook;
 
 public class NewSelection {
 
-	// Complete this method 
 	/**
+	 * Returns specific information based on the type of `o`:
+	 * - If `o` is not a `Book`, returns an empty string.
+	 * - If `o` is a `Comic`, returns the title.
+	 * - If `o` is a `Fiction`, returns the name.
+	 * - If `o` is a `TextBook`, returns the subject.
 	 * 
 	 * @param o object
-	 * returns if o is not a book, returns empty string, if Comic, returns title, of Fiction
-	 * returns name, and if TextBook, returns subject.
+	 * @return corresponding string based on the object's type
 	 */
 	public static String getAgeOrTitle(Object o) {
-		
-		 
-			if(o instanceof Comic)
-			{
-				return ((Comic)o).title();
-			}
-			else if(o instanceof Fiction)
-			{
-				return ((Fiction)o).name();
-			}
-			else if(o instanceof TextBook)
-			{
-				return ((TextBook)o).subject();
-			}
-			else
-			  return null;
+		return switch (o){
+			case Comic comic -> comic.title();
+			case Fiction fiction -> fiction.name();
+			case TextBook textBook -> textBook.subject();
+			default -> "";
+		};
 	}
 
 	public static void main(String[] args) {
-		
-		//  Write a test code here and execute and text.
-		TextBook t = new TextBook("Object Oriented Systems");
-		Comic c = new Comic("Batman: The Killing Joke", 30);
-		Fiction f = new Fiction("Good Omens", FictionType.Comedy);
-		System.out.println("Verifying ToString method of books : ");
-		System.out.println(t.toString() + "\n");
-		System.out.println(c.toString() + "\n");
-		System.out.println(f.toString() + "\n");
+		// Test cases
+		Comic comic = new Comic("Superhero Adventures", 25);
+		Fiction fiction = new Fiction("Mystery Novel","Whodunit Series", FictionType.Comedy);
+		TextBook textBook = new TextBook("Calculus 101", "Mathematics");
 
-		System.out.println("Using  getAgeorTItle method : ");
-		System.out.println("getting  getAgeorTItle for textbook : " + getAgeOrTitle(t) + "\n");
-		System.out.println("getting  getAgeorTItle for comic: " + getAgeOrTitle(c) + "\n");
-		System.out.println("getting  getAgeorTItle for Fiction : " + getAgeOrTitle(f) + "\n");
-		
+		System.out.println("Comic Title: " + getAgeOrTitle(comic));     
+		System.out.println("Fiction Name: " + getAgeOrTitle(fiction));  
+		System.out.println("TextBook Subject: " + getAgeOrTitle(textBook)); 
 	}
 }

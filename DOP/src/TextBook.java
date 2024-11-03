@@ -1,5 +1,5 @@
 
-//  Complete this with record components
-public record TextBook(String subject) {
+// TODO: Complete this with record components
+public record TextBook() {
 
 }

@@ -1,8 +1,6 @@
 package oldshelf;
 
-public abstract class Book {
-
-	public Book() {
-		
-	}
+public interface Book {
+    // Getter for title
+    String title();
 }
